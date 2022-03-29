@@ -24,5 +24,5 @@ jobs:
         uses: canonical/charming-actions/upload-charm@1.0.0
         with:
           credentials: ${{ secrets.CHARMCRAFT_CREDENTIALS }}
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+          github-token: ${{ secrets.GH_TOKEN }}
           channel: latest/edge
