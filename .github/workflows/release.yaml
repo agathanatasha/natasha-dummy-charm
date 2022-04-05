@@ -3,18 +3,17 @@ name: Release charm to other tracks and channels
 on:
   workflow_dispatch:
     inputs:
-      channel:
-        description: 'Channel'
+      destination-channel:
+        description: 'Destination Channel'
+        required: true
+      origin-channel:
+        description: 'Origin Channel'
         required: false
-        default: 'candidate'
-        type: choice
-        options:
-          - edge
-          - beta
-          - candidate
-          - stable
       rev:
         description: 'Revision number'
+        required: false
+      tag-prefix:
+        description: 'Tag Prefix'
         required: false
 
 jobs:
@@ -28,5 +27,7 @@ jobs:
         with:
           credentials: ${{ secrets.CHARMCRAFT_CREDENTIALS }}
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          channel: ${{ github.event.inputs.channel }}
-          rev: ${{ github.event.inputs.rev }}
+          destination-channel: ${{ github.event.inputs.destination-channel }}
+          origin-channel: ${{ github.event.inputs.origin-channel }}
+          revision: ${{ github.event.inputs.rev }}
+          tag-prefix: ${{ github.event.inputs.tag-prefix }}
