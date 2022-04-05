@@ -1,0 +1,32 @@
+name: Release charm to other tracks and channels
+
+on:
+  workflow_dispatch:
+    inputs:
+      channel:
+        description: 'Channel'
+        required: false
+        default: 'candidate'
+        type: choice
+        options:
+          - edge
+          - beta
+          - candidate
+          - stable
+      rev:
+        description: 'Revision number'
+        required: false
+
+jobs:
+  promote-charm:
+    name: Promote charm
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Release charm to channel
+        uses: canonical/charming-actions/release-charm@promote-charm
+        with:
+          credentials: ${{ secrets.CHARMCRAFT_CREDENTIALS }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          channel: ${{ github.event.inputs.channel }}
+          rev: ${{ github.event.inputs.rev }}
