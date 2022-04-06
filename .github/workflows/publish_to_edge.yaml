@@ -1,7 +1,11 @@
 name: Publish to latest/edge
 
 on:
-  push:
+  workflow_run:
+    workflows:
+      - 'Tests'
+    types:
+      - 'completed'
     branches:
       - master
       - main

@@ -2,7 +2,6 @@ name: Release charm to other tracks and channels
 
 on:
   workflow_dispatch:
-    description: 'Please provide either origin channel or a revision number'
     inputs:
       destination-channel:
         description: 'Destination Channel'
