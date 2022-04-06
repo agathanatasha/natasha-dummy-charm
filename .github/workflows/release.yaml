@@ -21,6 +21,12 @@ jobs:
     name: Promote charm
     runs-on: ubuntu-latest
     steps:
+      - name: Manual Approving Release
+        uses: trstringer/manual-approval@v1
+        with:
+          secret: ${{ github.TOKEN }}
+          approvers: canonical/kubeflow
+          minimum-approvals: 1
       - uses: actions/checkout@v2
       - name: Release charm to channel
         uses: canonical/charming-actions/release-charm@promote-charm
