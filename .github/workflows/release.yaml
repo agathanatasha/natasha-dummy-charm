@@ -8,7 +8,7 @@ on:
         required: true
       origin-channel:
         description: 'Origin Channel'
-        required: false
+        required: true
 
 jobs:
   promote-charm:
