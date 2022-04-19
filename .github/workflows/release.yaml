@@ -9,19 +9,11 @@ on:
       origin-channel:
         description: 'Origin Channel'
         required: false
-      rev:
-        description: 'Revision number'
-        required: false
-      tag-prefix:
-        description: 'Tag Prefix'
-        required: false
 
 jobs:
   promote-charm:
     name: Release charm
     runs-on: ubuntu-latest
-    environment:
-      name: release-charm
     steps:
       - uses: actions/checkout@v2
       - name: Release charm to channel
@@ -31,5 +23,3 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           destination-channel: ${{ github.event.inputs.destination-channel }}
           origin-channel: ${{ github.event.inputs.origin-channel }}
-          revision: ${{ github.event.inputs.rev }}
-          tag-prefix: ${{ github.event.inputs.tag-prefix }}
