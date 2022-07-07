@@ -9,15 +9,24 @@ on:
       origin-channel:
         description: 'Origin Channel'
         required: true
+      base-name:
+        description: 'Base Name'
+        required: true
+      base-channel:
+        description: 'Base Channel'
+        required: true
+      base-architecture:
+        description: 'Base Architecture'
+        required: true
 
 jobs:
   promote-charm:
-    name: Release charm
+    name: Promote charm
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - name: Release charm to channel
-        uses: canonical/charming-actions/release-charm@promote-charm
+        uses: canonical/charming-actions/release-charm@handle-charmcraft-structured-status
         with:
           credentials: ${{ secrets.CHARMCRAFT_CREDENTIALS }}
           github-token: ${{ secrets.GITHUB_TOKEN }}
