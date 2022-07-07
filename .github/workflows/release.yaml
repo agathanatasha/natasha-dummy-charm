@@ -9,15 +9,15 @@ on:
       origin-channel:
         description: 'Origin Channel'
         required: true
-      base-name:
-        description: 'Base Name'
-        required: true
-      base-channel:
-        description: 'Base Channel'
-        required: true
-      base-architecture:
-        description: 'Base Architecture'
-        required: true
+      # base-name:
+      #   description: 'Base Name'
+      #   required: true
+      # base-channel:
+      #   description: 'Base Channel'
+      #   required: true
+      # base-architecture:
+      #   description: 'Base Architecture'
+      #   required: true
 
 jobs:
   promote-charm:
