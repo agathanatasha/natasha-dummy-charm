@@ -1,9 +1,12 @@
-name: Run weekly tests
+name: Update Charm Libraries
 
 on:
   workflow_dispatch:
   schedule:
     - cron: '0 8 * * MON'
+
+env:
+  CHARMCRAFT_AUTH: ${{ secrets.CHARMCRAFT_CREDENTIALS }}
 
 jobs:
   update-libs:
