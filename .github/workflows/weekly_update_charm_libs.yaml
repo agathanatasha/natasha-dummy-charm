@@ -1,0 +1,34 @@
+name: Run weekly tests
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 8 * * MON'
+
+jobs:
+  update-libs:
+    name: Check libraries
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup operator environment
+        uses: charmed-kubernetes/actions-operator@main
+        with:
+          provider: lxd
+      - run: sudo snap refresh charmcraft --channel latest/candidate
+      - name: update charm libs
+        run: charmcraft fetch-lib
+      - name: Create Pull Request
+        id: cpr
+        uses: peter-evans/create-pull-request@v4
+        with:
+          title: 'Update Charm Libs by bot'
+          commit-message: Update charm libs
+          signoff: false
+          delete-branch: true
+          branch: update-charm-libs
+      - name: Print Created Pull Request
+        if: ${{ steps.cpr.outputs.pull-request-number }}
+        run: |
+          echo "Pull Request Number - ${{ steps.cpr.outputs.pull-request-number }}"
+          echo "Pull Request URL - ${{ steps.cpr.outputs.pull-request-url }}"
