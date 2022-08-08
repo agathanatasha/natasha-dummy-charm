@@ -1,4 +1,4 @@
 ops >= 1.2.0
 lightkube
-charmed-kubeflow-chisme < 0.0.2
+charmed-kubeflow-chisme ==0.0.3
 jinja2 == 2.10.3
