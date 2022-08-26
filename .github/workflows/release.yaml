@@ -27,7 +27,7 @@ jobs:
     name: Promote charm
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: Release charm to channel
         uses: canonical/charming-actions/release-charm@handle-charmcraft-structured-status
         with:
