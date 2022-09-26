@@ -8,6 +8,6 @@ module.exports = {
   includeForks: true,
   repositories: ['agathanatasha/natasha-dummy-charm'],
   pip_requirements: {
-    fileMatch: ['\\.requirements$'],
+    fileMatch: ['(^|/)([\w-]*)requirements([\w-]*)\.(txt|pip)$'],
   },
 }
