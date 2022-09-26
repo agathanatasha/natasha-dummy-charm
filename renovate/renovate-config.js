@@ -7,7 +7,4 @@ module.exports = {
   platform: 'github',
   includeForks: true,
   repositories: ['agathanatasha/natasha-dummy-charm'],
-  pip_requirements: {
-    fileMatch: ['(^|/)([\w-]*)requirements([\w-]*)\.(txt|pip)$'],
-  },
 }
